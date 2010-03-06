@@ -1,6 +1,6 @@
 (ns com.trottercashion.bert-clj.utility)
 
-(def *version* (byte 131))
+(def *version* (.byteValue 131))
 
 (def *etf-types*
   { :small-int    97
