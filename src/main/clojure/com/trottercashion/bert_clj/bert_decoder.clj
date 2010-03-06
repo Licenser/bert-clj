@@ -1,6 +1,5 @@
 (ns com.trottercashion.bert-clj.bert-decoder
-  (:use com.trottercashion.bert-clj.utility)
-  (:require [clojure.contrib.seq-utils :as seq-utils]))
+  (:use com.trottercashion.bert-clj.utility))
 
 (defmulti decoder (fn [type data] type))
 
@@ -18,7 +17,7 @@
 
 (defn regex-flags [options]
   (let [inverse-options (remove nil? (map (fn [[key val]]
-                                           (if (seq-utils/find-first #(= key %) options) nil val))
+                                           (if (first (filter #(= key %) options)) nil val))
                                          *symbols->inverse-regex-flags*))]
     (reduce bit-or (concat (map #(*symbols->regex-flags* %) options)
                            inverse-options))))

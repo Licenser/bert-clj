@@ -1,7 +1,6 @@
 (ns com.trottercashion.bert-clj.etf-encoder
   (:use com.trottercashion.bert-clj.utility)
-  (:require [clojure.contrib.math :as math]
-            [com.trottercashion.bert-clj.bert-encoder :as bert-encoder]))
+  (:require [com.trottercashion.bert-clj.bert-encoder :as bert-encoder]))
 
 (declare encode-without-magic)
 
@@ -43,6 +42,14 @@
   (let [size (count coll)]
     (coerce :binary (extract-bytes size 4) coll)))
 
+;; function taken from clojure-contrib
+(defn- abs "(abs n) is the absolute value of n" [n]
+  (cond
+   (not (number? n)) (throw (IllegalArgumentException.
+                             "abs requires a number"))
+   (neg? n) (- n)
+   :else n))
+
 (defmulti encode #(*type-mappings* (type %)))
 
 (defmethod encode :string [string]
@@ -79,7 +86,7 @@
 (defmethod encode :bignum [i]
   (let [sign (if (< i 0) 1 0)
         ;; need the abs because data->bytes goes nuts otherwise
-        bytes (data->bytes (math/abs i))
+        bytes (data->bytes (abs i))
         size (count bytes)]
     (if (> size 255)
       (coerce :large-bignum (extract-bytes size 4) (extract-bytes sign 1) bytes)
