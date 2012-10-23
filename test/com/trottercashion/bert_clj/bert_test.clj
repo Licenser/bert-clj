@@ -1,5 +1,5 @@
-(ns com.trottercashion.bert-clj.encoding-test
-  (:use clojure.contrib.test-is)
+(ns com.trottercashion.bert-clj.bert-test
+  (:use clojure.test)
   (:require [com.trottercashion.bert-clj.bert :as bert]
             [com.trottercashion.bert-clj.etf-encoder :as etf-encoder]
             [com.trottercashion.bert-clj.bert-encoder :as bert-encoder]))

@@ -1,5 +1,5 @@
 (ns com.trottercashion.bert-clj.bert-encoder-test
-  (:use clojure.contrib.test-is)
+  (:use clojure.test)
   (:require [com.trottercashion.bert-clj.bert-encoder :as encoder]))
 
 (deftest should-encode-nil
@@ -11,7 +11,7 @@
   (is (= (encoder/encode false) [:bert :false])))
 
 (deftest should-encode-dict
-  (let [expected [:bert :dict '(["hello" "mom"] [:nine 7])]]
+  (let [expected [:bert :dict '([:nine 7] ["hello" "mom"])]]
     (is (= (encoder/encode {"hello" "mom" :nine 7}) expected))))
 
 (deftest should-encode-time

@@ -1,5 +1,5 @@
 (ns com.trottercashion.bert-clj.bert-decoder-test
-  (:use clojure.contrib.test-is)
+  (:use clojure.test)
   (:require [com.trottercashion.bert-clj.bert-decoder :as decoder]))
 
 (deftest should-decode-nil

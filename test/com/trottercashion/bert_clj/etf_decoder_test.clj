@@ -1,9 +1,9 @@
 (ns com.trottercashion.bert-clj.etf-decoder-test
-  (:use clojure.contrib.test-is
+  (:use clojure.test
         com.trottercashion.bert-clj.test-helper)
   (:require [com.trottercashion.bert-clj.etf-decoder :as decoder]
             [com.trottercashion.bert-clj.etf-encoder :as encoder]
-            [clojure.contrib.math :as math]))
+            [clojure.math.numeric-tower :as math]))
 
 (defn test-round-trip [val]
   (let [encoded (encoder/encode val)]
@@ -44,7 +44,7 @@
   (test-round-trip '(1 2 3)))
 
 (deftest should-decode-binary-lists
-  (test-round-trip (map byte '(1 2 3))))
+  (test-round-trip (map unchecked-byte '(1 2 3))))
 
 (deftest should-decode-small-bignums
   (test-round-trip (bit-shift-left 1 31)))

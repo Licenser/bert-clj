@@ -1,4 +1,4 @@
-(require '[clojure.contrib.test-is :as test]
+(require '[clojure.test :as test]
          'com.trottercashion.bert-clj.bert-test
          'com.trottercashion.bert-clj.etf-encoder-test
          'com.trottercashion.bert-clj.bert-encoder-test

@@ -32,7 +32,7 @@
 
 (defn coerce [kind & args]
   (let [stuff (concat [*version* (*etf-types* kind)] (apply concat args))]
-    (map byte stuff)))
+    (map unchecked-byte stuff)))
 
 (defn encode-list [coll]
   (let [size (count coll)]
