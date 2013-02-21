@@ -57,7 +57,7 @@
     (coerce :string (twoByteLength bytes) bytes)))
 
 (defmethod encode :float [f]
-  (let [bytes (.getBytes (format "%.20e" f))]
+  (let [bytes (byte-array 31 (.getBytes (format "%.20e" f)))]
     (coerce :float bytes)))
 
 (defmethod encode :integer [i]
