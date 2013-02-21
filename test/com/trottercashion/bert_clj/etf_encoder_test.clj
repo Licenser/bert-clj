@@ -8,7 +8,7 @@
     (is (= (encoder/encode "hello") expected))))
 
 (deftest should-encode-float
-  (let [expected (binary 131 99 53 46 53 48 48 48 48 48 48 48 48 48 48 48 48 48 48 48 48 48 48 48 101 43 48 48)]
+  (let [expected (binary 131 99 53 46 53 48 48 48 48 48 48 48 48 48 48 48 48 48 48 48 48 48 48 48 101 43 48 48 0 0 0 0 0)]
     (is (= (encoder/encode 5.5) expected))))
 
 (deftest should-encode-small-integer

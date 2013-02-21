@@ -37,7 +37,7 @@
   (bytes->string-with-length data))
 
 (defdecoder :float [data]
-  [(Float. (String. (make-byte-array (take 26 data)))) 26])
+  [(Float. (String. (make-byte-array (take 31 data)))) 31])
 
 (defdecoder :small-int [data]
   [(bytes->data (take 1 data)) 1])
